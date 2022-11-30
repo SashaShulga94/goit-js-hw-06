@@ -6,15 +6,18 @@ const ingredients = [
   "Herbs",
   "Condiments",
 ];
-const list = document.querySelector("ul#ingredients");
-console.log(list);
 
-list.classList.add(".item");
-
-console.log(list.classList);
-const firstItem = document.createElement("li");
-firstItem.textContent = [ingredients].slice(" ");
-list.append(firstItem);
+function list(ingredients) {
+  return ingredients.map((ingredient) => {
+    const li = document.createElement("li");
+    li.classList.add(".item");
+    li.textContent = ingredient;
+    return li;
+  });
+}
+const recepyList = list(ingredients);
+const ingredientsRef = document.querySelector(`#ingredients`);
+ingredientsRef.append(...recepyList);
 
 // HTML містить порожній список ul#ingredients.
 
