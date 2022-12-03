@@ -7,11 +7,12 @@
 
 const nameInput = document.querySelector("#name-input");
 const nameOutput = document.querySelector("#name-output");
-console.log(nameInput);
-console.log(nameOutput);
 
-nameInput.addEventListener("input", onInput);
-function onInput(evt) {
-  if (nameOutput.textContent === " ") return "Anonymous";
-  else nameOutput.textContent = evt.currentTarget.value;
+nameInput.addEventListener("input", userName);
+function userName(evt) {
+  if (!evt.currentTarget.value.trim()) {
+    nameOutput.textContent === `Anonymous`;
+  } else {
+    nameOutput.textContent = evt.currentTarget.value;
+  }
 }
