@@ -14,6 +14,19 @@
 //     .padStart(6, 0)}`;
 // }
 
+const backgroundColorSpan = document.querySelector("span.color");
+const changeColorBtn = document.querySelector(".change-color");
+const bodyColor = document.body;
+
+changeColorBtn.addEventListener("click", changeColorBody);
+
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+}
+
+function changeColorBody(evt) {
+  const color = getRandomHexColor();
+  bodyColor.style.backgroundColor = color;
+  backgroundColorSpan.textContent = color;
+  console.dir(evt.currentTarget);
 }
