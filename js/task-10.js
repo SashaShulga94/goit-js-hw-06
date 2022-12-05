@@ -28,12 +28,12 @@
 const controlField = document.querySelector("input");
 const btnCreate = document.querySelector("[data-create]");
 const btnDestroy = document.querySelector("[data-destroy]");
-const createBoxes = document.querySelector("#boxes");
+const boxes = document.querySelector("#boxes");
 
-btnCreate.addEventListener("click", createBoxes);
+btnCreate.addEventListener("click", getInputValue);
 btnDestroy.addEventListener("click", destroyBoxes);
 
-function createBoxes(event) {
+function getInputValue(evt) {
   const amount = controlField.valueAsNumber;
   if (!amount) return;
   createBoxes(amount);
@@ -44,18 +44,18 @@ function getRandomHexColor() {
 }
 
 function createBoxes(amount) {
-  const div = document.createElement("div");
-  createBoxes.append(div);
+  destroyBoxes();
+  const markup = [];
+  for (let i = 0; i < amount; i += 1) {
+    const box = document.createElement(`div`);
+    const size = 30 + 10 * i;
+    box.style.backgroundColor = `${getRandomHexColor()}`;
+    box.style.width = `${size}px`;
+    box.style.height = `${size}px`;
+    markup.push(box);
+  }
+  boxes.append(...markup);
 }
-
-// function list(ingredients) {
-//   return ingredients.map((ingredient) => {
-//     const li = document.createElement("li");
-//     li.classList.add(".item");
-//     li.textContent = ingredient;
-//     return li;
-//   });
-// }
-// const recepyList = list(ingredients);
-// const ingredientsRef = document.querySelector(`#ingredients`);
-// ingredientsRef.append(...recepyList);
+function destroyBoxes() {
+  boxes.innerHTML = ``;
+}

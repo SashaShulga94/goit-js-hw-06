@@ -14,15 +14,11 @@ const images = [
 ];
 
 const portfolio = document.querySelector("ul.gallery");
-const portfolioCard = images
-  .map(
-    (image) =>
-      `<li><img url:${image.url} alt:${image.alt} width = 150px height = 150px></li>`
-  )
-  .join("");
-portfolio.insertAdjacentHTML("afterbegin", portfolioCard);
+const createPortfolioMarkup = ({ url, alt }) =>
+  `<li><img src=${url} alt=${alt} class=pictures width = 250px height = 150px ></li>`;
+const createPortfolio = images.map(createPortfolioMarkup).join(``);
+portfolio.insertAdjacentHTML("afterbegin", createPortfolio);
 
-console.log(portfolio);
 // Напиши скрипт для створення галереї зображень на підставі масиву даних. HTML містить
 //  список ul.gallery.
 
