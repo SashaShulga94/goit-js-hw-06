@@ -30,8 +30,8 @@ function userLoginForm(evt) {
     elements: { email, password },
   } = evt.currentTarget;
 
-  if (email.value === "" || password.value === "") {
-    alert("Please fill in all the fields!");
+  if (email.value.trim() || password.value.trim()) {
+    return alert("Please fill in all the fields!");
   }
 
   //   console.dir(evt.currentTarget);
